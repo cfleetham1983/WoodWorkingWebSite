@@ -1,0 +1,22 @@
+:root {
+  /* Woodworking palette */
+  --primary-1: #5c3b24; /* walnut */
+  --primary-2: #8b5e34; /* oak */
+  --primary-3: #b07a45; /* cedar */
+  --primary-4: #d6a36a; /* pine */
+
+  --secondary-1: #2f4f3e; /* forest green */
+  --secondary-2: #4f6f52; /* moss green */
+  --secondary-3: #3f5f7a; /* slate blue */
+  --secondary-4: #7a4f2f; /* burnt umber */
+
+  /* Semantic theme tokens */
+  --bg-page: #f4efe7;
+  --surface-1: #fffaf2;
+  --surface-2: #f1e4d3;
+  --text-primary: #2a2118;
+  --text-muted: #5f4a36;
+  --text-inverse: #fffaf2;
+  --border-default: #d6a36a;
+  --focus-accent: #2f4f3e;
+}
