@@ -25,7 +25,13 @@ const pages: PageContent[] = [
     path: "/projectpage",
     title: "The Projects Page",
     description:
-      "On this page you will find woodworking project ideas and plans.this ppage is under construction and will be updated with content soon.",
+      "On this page you will find woodworking project ideas and plans. this ppage is under construction and will be updated with content soon.",
+  },
+  {
+    path: "/WoodShopPage",
+    title: "The WoodShop Page",
+    description:
+      "On this page you will find a table of shops that sell wood. this page is under construction and will be updated with content soon.",
   },
 ];
 

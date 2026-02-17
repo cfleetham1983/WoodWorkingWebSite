@@ -1,0 +1,27 @@
+﻿<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" role="img" aria-labelledby="title desc">
+  <title id="title">Woodworker at Bench Icon</title>
+  <desc id="desc">A person standing at a woodworking bench with a hand plane.</desc>
+
+  <defs>
+    <linearGradient id="wood" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#b9824a"/>
+      <stop offset="100%" stop-color="#8b5a2b"/>
+    </linearGradient>
+  </defs>
+
+  <g fill="none" stroke="#5c3b1e" stroke-width="4" stroke-linecap="round" stroke-linejoin="round">
+    <circle cx="64" cy="34" r="9" fill="#d8b08a"/>
+    <path d="M64 43v20"/>
+    <path d="M64 51l-14 9"/>
+    <path d="M64 51l15 8"/>
+    <path d="M64 63l-9 20"/>
+    <path d="M64 63l11 20"/>
+
+    <rect x="24" y="62" width="80" height="13" rx="2" fill="url(#wood)" stroke="#6d4423"/>
+    <path d="M34 75v17"/>
+    <path d="M94 75v17"/>
+
+    <rect x="72" y="58" width="20" height="6" rx="2" fill="#7f8c8d" stroke="#4f5a5a"/>
+    <path d="M90 61h9" stroke="#6d4423"/>
+  </g>
+</svg>

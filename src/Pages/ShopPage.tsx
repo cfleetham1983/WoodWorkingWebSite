@@ -8,7 +8,7 @@ import MenuBookIcon from "@mui/icons-material/MenuBook";
 const shopCards: CardItem[] = [
   {
     label: "Wood Suppliers",
-    to: "/shoppage/suppliers",
+    to: "/WoodShopPage",
     icon: <StorefrontIcon />,
   },
   { label: "Tool Shops", to: "/shoppage/tools", icon: <CarpenterIcon /> },
