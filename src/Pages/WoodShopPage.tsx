@@ -8,6 +8,7 @@ import {
   Typography,
   TextField,
 } from "@mui/material";
+import StyledButton from "../Components/StyledButton";
 import {
   fetchShopSuppliers,
   type ShopSupplier,
@@ -294,6 +295,34 @@ function WoodShopPage() {
                 )}
               </CardContent>
             </Card>
+            <Card sx={{                 
+              width: "100%",
+                minHeight: 10,
+                borderRadius: 3,
+                border: "1px solid var(--primary-3)",
+                boxShadow: "none",
+                background: "var(--surface-1)",
+                mb: 2, 
+                mt:2}}>
+                <CardContent
+                sx={{
+                  display:"flex", 
+                flexDirection:"column", 
+                alignItems:"center", 
+                gap:2}}>
+                  <Typography variant="h6" sx={{ mb: 1 }}>
+                    Add Supplier Details
+                  </Typography>
+                  <StyledButton
+                    name="Add Supplier"
+                    variant="outline"
+                    size="default"
+                    onPressed={() => {
+                      alert("Add Supplier functionality coming soon!");
+                    }}
+                  />
+                </CardContent>
+              </Card>
           </Box>
         </Box>
       </Box>
