@@ -30,7 +30,7 @@ function mapSupplierToShopInfo(supplier: ShopSupplier): ShopInfo {
     : "Location unavailable";
   const supplies = supplier.notes?.trim()
     ? supplier.notes
-    : "Wood materials and supplies";
+    : "Tool supplies and equipment";
 
   return {
     id: supplier.id,
@@ -43,7 +43,7 @@ function mapSupplierToShopInfo(supplier: ShopSupplier): ShopInfo {
   };
 }
 
-function WoodShopPage() {
+function ToolShopPage() {
   const [shops, setShops] = useState<ShopInfo[]>([]);
   const [selectedShopId, setSelectedShopId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -58,7 +58,7 @@ function WoodShopPage() {
       setError(null);
 
       try {
-        const suppliers = await fetchShopSuppliers("wood");
+        const suppliers = await fetchShopSuppliers("tools");
         if (cancelled) return;
         const mappedShops = suppliers.map(mapSupplierToShopInfo);
         setShops(mappedShops);
@@ -68,7 +68,7 @@ function WoodShopPage() {
         setError(
           loadError instanceof Error
             ? loadError.message
-            : "Failed to load wood suppliers",
+            : "Failed to load tool suppliers",
         );
       } finally {
         if (!cancelled) setLoading(false);
@@ -114,10 +114,10 @@ function WoodShopPage() {
     : "";
 
   return (
-    <ContentPage path="/WoodShopPage">
-      <Box sx={{ px: 2, pb: 6, pt: 2 }}>
+    <ContentPage path="/ToolShopPage">
+      <Box sx={{ px: 4, pb: 6, pt: 2 }}>
         <Typography variant="h6" sx={{ mb: 2 }}>
-          Shop Information
+          Tool Shop Information
         </Typography>
         <Box
           sx={{
@@ -140,7 +140,7 @@ function WoodShopPage() {
             >
               {!loading && !error && filteredShops.length === 0 && (
                 <Typography variant="body2" sx={{ color: "var(--text-secondary)" }}>
-                  No wood suppliers match your search.
+                  No tool suppliers match your search.
                 </Typography>
               )}
               {filteredShops.map((shop) => {
@@ -148,7 +148,6 @@ function WoodShopPage() {
                   <Card
                     key={shop.id}
                     sx={{
-                      width: "100%",
                       borderRadius: 3,
                       border:
                         selectedShopId === shop.id
@@ -156,10 +155,6 @@ function WoodShopPage() {
                           : "1px solid var(--primary-3)",
                       boxShadow: "none",
                       background: "var(--surface-1)",
-                      "&:hover": {
-                        borderColor: "var(--secondary-2)",
-                        boxShadow: "0 4px 12px rgba(0, 0, 0, 0.1)",
-                      },
                     }}
                   >
                     <CardActionArea
@@ -244,7 +239,7 @@ function WoodShopPage() {
                 >
                   {selectedShop ? (
                     <iframe
-                      title="Wood Shop Locations Map"
+                      title="Tool Shop Locations Map"
                       src={mapSrc}
                       style={{ width: "100%", height: "100%", border: 0 }}
                       loading="lazy"
@@ -301,4 +296,4 @@ function WoodShopPage() {
   );
 }
 
-export default WoodShopPage;
+export default ToolShopPage;

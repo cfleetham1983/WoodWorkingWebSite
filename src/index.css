@@ -18,5 +18,7 @@ body {
   margin: 0;
   min-width: 320px;
   background-color: var(--bg-page);
+  background-image: var(--bg-page-gradient);
+  background-attachment: fixed;
   color: var(--text-primary);
 }

@@ -11,7 +11,7 @@ const shopCards: CardItem[] = [
     to: "/WoodShopPage",
     icon: <StorefrontIcon />,
   },
-  { label: "Tool Shops", to: "/shoppage/tools", icon: <CarpenterIcon /> },
+  { label: "Tool Shops", to: "/ToolShopPage", icon: <CarpenterIcon /> },
   {
     label: "The Wood Base",
     to: "https://www.wood-database.com/wood-filter/",

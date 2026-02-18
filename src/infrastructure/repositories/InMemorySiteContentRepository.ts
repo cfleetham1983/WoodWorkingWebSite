@@ -33,6 +33,12 @@ const pages: PageContent[] = [
     description:
       "On this page you will find a table of shops that sell wood. this page is under construction and will be updated with content soon.",
   },
+  {
+    path: "/ToolShopPage",
+    title: "The ToolShop Page",
+    description:
+      "On this page you will find a table of shops that sell tools. this page is under construction and will be updated with content soon.",
+  },
 ];
 
 export class InMemorySiteContentRepository implements SiteContentRepository {

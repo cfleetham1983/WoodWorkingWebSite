@@ -4,6 +4,7 @@ import Home from "./Pages/Home";
 import ShopPage from "./Pages/ShopPage";
 import ProjectPage from "./Pages/ProjectPage";
 import WoodShopPage from "./Pages/WoodShopPage";
+import ToolShopPage from "./Pages/ToolShopPage";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
       <Route path="/projects" element={<Navigate to="/shoppage" replace />} />
       <Route path="/contact" element={<Navigate to="/projectpage" replace />} />
       <Route path="/WoodShopPage" element={<WoodShopPage />} />
+      <Route path="/ToolShopPage" element={<ToolShopPage />} />
       <Route path="*" element={<Navigate to="/" replace />} />
     </Routes>
   );

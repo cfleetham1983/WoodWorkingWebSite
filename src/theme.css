@@ -1,22 +1,36 @@
 :root {
-  /* Woodworking palette */
-  --primary-1: #5c3b24; /* walnut */
-  --primary-2: #8b5e34; /* oak */
+  /* Core wood palette */
+  --primary-1: #4a2f1d; /* dark walnut */
+  --primary-2: #7a4f2a; /* aged oak */
   --primary-3: #b07a45; /* cedar */
-  --primary-4: #d6a36a; /* pine */
+  --primary-4: #d3a06a; /* pine */
+  --primary-5: #efd1ac; /* sanded maple */
 
-  --secondary-1: #2f4f3e; /* forest green */
-  --secondary-2: #4f6f52; /* moss green */
-  --secondary-3: #3f5f7a; /* slate blue */
-  --secondary-4: #7a4f2f; /* burnt umber */
+  /* Natural accent palette */
+  --secondary-1: #2e4b3a; /* pine green */
+  --secondary-2: #4e7055; /* moss green */
+  --secondary-3: #466174; /* weathered steel blue */
+  --secondary-4: #7e4a29; /* bark brown */
 
-  /* Semantic theme tokens */
-  --bg-page: #f4efe7;
-  --surface-1: #fffaf2;
-  --surface-2: #f1e4d3;
-  --text-primary: #2a2118;
-  --text-muted: #5f4a36;
-  --text-inverse: #fffaf2;
-  --border-default: #d6a36a;
-  --focus-accent: #2f4f3e;
+  /* Semantic tokens */
+  --bg-page: #efe4d4;
+  --bg-page-gradient:
+    radial-gradient(1200px 500px at 15% -10%, #f8eee0 0%, transparent 55%),
+    radial-gradient(900px 420px at 90% 0%, #e4d1ba 0%, transparent 50%),
+    linear-gradient(180deg, #f2e7d9 0%, #e9dbc8 48%, #e4d3bf 100%);
+  --surface-1: #fff8ef;
+  --surface-2: #f4e7d6;
+  --surface-3: #ecdbc7;
+
+  --text-primary: #2a1f14;
+  --text-secondary: #5d4834;
+  --text-muted: #7a624d;
+  --text-inverse: #fff8ef;
+
+  --border-default: #c79b6d;
+  --border-strong: #8d6339;
+  --focus-accent: #4e7055;
+
+  --shadow-soft: 0 8px 24px rgba(74, 47, 29, 0.08);
+  --shadow-lifted: 0 14px 34px rgba(74, 47, 29, 0.14);
 }
