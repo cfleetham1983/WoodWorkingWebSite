@@ -9,6 +9,10 @@ import {
   TextField,
 } from "@mui/material";
 import StyledButton from "../Components/StyledButton";
+import ModalForm, {
+  type FormValues,
+  type Question,
+} from "../Components/ModalForm";
 import {
   fetchShopSuppliers,
   type ShopSupplier,
@@ -23,6 +27,59 @@ type ShopInfo = {
   websiteUrl: string | null;
   phone: string | null;
 };
+
+const supplierQuestions: Question[] = [
+  {
+    id: "shop_name",
+    label: "Shop Name",
+    type: "text",
+    required: true,
+    placeholder: "Acme Lumber",
+  },
+  {
+    id: "supply_type",
+    label: "Supply Type",
+    type: "select",
+    required: true,
+    options: [
+      { label: "Wood", value: "wood" },
+      { label: "Tools", value: "tools" },
+      { label: "Both", value: "both" },
+    ],
+  },
+  {
+    id: "city",
+    label: "City",
+    type: "text",
+    required: true,
+    placeholder: "Leeds",
+  },
+  {
+    id: "County",
+    label: "County",
+    type: "text",
+    required: true,
+    placeholder: "Yorkshire",
+  },
+  {
+    id: "website_url",
+    label: "Website URL",
+    type: "text",
+    placeholder: "https://example.com",
+  },
+  {
+    id: "phone",
+    label: "Phone",
+    type: "tel",
+    placeholder: "0113 123 4567",
+  },
+  {
+    id: "notes",
+    label: "Notes",
+    type: "textarea",
+    helperText: "Optional details about wood products or specialties.",
+  },
+];
 
 function mapSupplierToShopInfo(supplier: ShopSupplier): ShopInfo {
   const locationParts = [supplier.city, supplier.state].filter(Boolean);
@@ -48,8 +105,14 @@ function WoodShopPage() {
   const [shops, setShops] = useState<ShopInfo[]>([]);
   const [selectedShopId, setSelectedShopId] = useState<number | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
+  const [isModalOpen, setIsModalOpen] = useState(false);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+
+  const handleAddSupplierSubmit = (values: FormValues) => {
+    console.log("Add supplier submitted:", values);
+    setIsModalOpen(false);
+  };
 
   useEffect(() => {
     let cancelled = false;
@@ -99,14 +162,18 @@ function WoodShopPage() {
       return;
     }
 
-    const selectedStillExists = shops.some((shop) => shop.id === selectedShopId);
+    const selectedStillExists = shops.some(
+      (shop) => shop.id === selectedShopId,
+    );
     if (!selectedStillExists) {
       setSelectedShopId(shops[0].id);
     }
   }, [selectedShopId, shops]);
 
   const selectedShop =
-    shops.find((shop) => shop.id === selectedShopId) ?? filteredShops[0] ?? null;
+    shops.find((shop) => shop.id === selectedShopId) ??
+    filteredShops[0] ??
+    null;
 
   const mapSrc = selectedShop
     ? `https://maps.google.com/maps?hl=en&q=${encodeURIComponent(
@@ -140,7 +207,10 @@ function WoodShopPage() {
               }}
             >
               {!loading && !error && filteredShops.length === 0 && (
-                <Typography variant="body2" sx={{ color: "var(--text-secondary)" }}>
+                <Typography
+                  variant="body2"
+                  sx={{ color: "var(--text-secondary)" }}
+                >
                   No wood suppliers match your search.
                 </Typography>
               )}
@@ -163,9 +233,7 @@ function WoodShopPage() {
                       },
                     }}
                   >
-                    <CardActionArea
-                      onClick={() => setSelectedShopId(shop.id)}
-                    >
+                    <CardActionArea onClick={() => setSelectedShopId(shop.id)}>
                       <CardContent>
                         <Typography variant="subtitle1" sx={{ mb: 0.5 }}>
                           {shop.name}
@@ -262,7 +330,10 @@ function WoodShopPage() {
                     >
                       <Typography
                         variant="body2"
-                        sx={{ color: "var(--text-secondary)", textAlign: "center" }}
+                        sx={{
+                          color: "var(--text-secondary)",
+                          textAlign: "center",
+                        }}
                       >
                         Select a supplier to view map details.
                       </Typography>
@@ -295,34 +366,47 @@ function WoodShopPage() {
                 )}
               </CardContent>
             </Card>
-            <Card sx={{                 
-              width: "100%",
+            <Card
+              sx={{
+                width: "100%",
                 minHeight: 10,
                 borderRadius: 3,
                 border: "1px solid var(--primary-3)",
                 boxShadow: "none",
                 background: "var(--surface-1)",
-                mb: 2, 
-                mt:2}}>
-                <CardContent
+                mb: 2,
+                mt: 2,
+              }}
+            >
+              <CardContent
                 sx={{
-                  display:"flex", 
-                flexDirection:"column", 
-                alignItems:"center", 
-                gap:2}}>
-                  <Typography variant="h6" sx={{ mb: 1 }}>
-                    Add Supplier Details
-                  </Typography>
-                  <StyledButton
-                    name="Add Supplier"
-                    variant="outline"
-                    size="default"
-                    onPressed={() => {
-                      alert("Add Supplier functionality coming soon!");
-                    }}
-                  />
-                </CardContent>
-              </Card>
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  gap: 2,
+                }}
+              >
+                <Typography variant="h6" sx={{ mb: 1 }}>
+                  Add Supplier Details
+                </Typography>
+                <StyledButton
+                  name="Add Supplier"
+                  variant="outline"
+                  size="default"
+                  onPressed={() => {
+                    setIsModalOpen(true);
+                  }}
+                />
+              </CardContent>
+            </Card>
+            <ModalForm
+              open={isModalOpen}
+              title="Add Supplier"
+              questions={supplierQuestions}
+              submitLabel="Save"
+              onClose={() => setIsModalOpen(false)}
+              onSubmit={handleAddSupplierSubmit}
+            />
           </Box>
         </Box>
       </Box>

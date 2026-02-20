@@ -3,7 +3,9 @@ import CardDeck, { type CardItem } from "../Components/CardDeck";
 import StorefrontIcon from "@mui/icons-material/Storefront";
 import CarpenterIcon from "@mui/icons-material/Carpenter";
 import LocalShippingIcon from "@mui/icons-material/LocalShipping";
+import WebAssetIcon from "@mui/icons-material/WebAsset";
 import MenuBookIcon from "@mui/icons-material/MenuBook";
+import WebIcon from "@mui/icons-material/Web";
 
 const shopCards: CardItem[] = [
   {
@@ -15,7 +17,13 @@ const shopCards: CardItem[] = [
   {
     label: "The Wood Base",
     to: "https://www.wood-database.com/wood-filter/",
-    icon: <MenuBookIcon />,
+    icon: <WebIcon />,
+    external: true,
+  },
+  {
+    label: "Woodworkers workshop",
+    to: "https://woodworkersworkshop.co.uk/",
+    icon: <WebIcon />,
     external: true,
   },
 ];
